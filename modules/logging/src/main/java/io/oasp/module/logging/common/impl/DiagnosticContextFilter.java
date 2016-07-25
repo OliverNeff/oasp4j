@@ -1,7 +1,5 @@
 package io.oasp.module.logging.common.impl;
 
-import io.oasp.module.logging.common.api.DiagnosticContextFacade;
-
 import java.io.IOException;
 import java.util.UUID;
 
@@ -17,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import io.oasp.module.logging.common.api.DiagnosticContextFacade;
 
 /**
  * Request logging filter that adds the request log message to the SLF4j mapped diagnostic context (MDC) before the
@@ -78,8 +78,8 @@ public class DiagnosticContextFilter implements Filter {
   }
 
   @Override
-  public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,
-      ServletException {
+  public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+      throws IOException, ServletException {
 
     setCorrelationId(request);
     try {
